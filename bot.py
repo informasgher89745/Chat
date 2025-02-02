@@ -75,7 +75,12 @@ async def restart(client, m: Message):
     ])
     
     # Final message with buttons
-    await accha.edit(f"Hello {m.from_user.first_name}! \nI'm {BOT_NAME}, your friendly chatbot 🤖. \nI can chat with you, respond to commands, and assist in your groups. \nUse /chatbot on or /chatbot off to control me in groups. \nEnjoy chatting!")
+    await accha.edit(
+        f"Hello {m.from_user.first_name}! \nI'm {BOT_NAME}, your friendly chatbot 🤖. \n"
+        "I can chat with you, respond to commands, and assist in your groups. \n"
+        "Use /chatbot on or /chatbot off to control me in groups. \nEnjoy chatting!",
+        reply_markup=buttons 
+    )
 
 @bot.on_message(
     filters.command(["chatbot off", f"chatbot@{BOT_USERNAME} off"], prefixes=["/", ".", "?", "-"])
