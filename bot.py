@@ -1,3 +1,4 @@
+from pyrogram.enums import ChatAction  # Import ChatAction
 from pyrogram import Client, filters
 from pyrogram.types import *
 from pyrogram.enums import ChatMemberStatus  # Correct import
@@ -150,7 +151,7 @@ async def aaghaai(client: Client, message: Message):
        aagha = Fazaldb["FazalDB"]["Groups"] 
        is_aagha = aagha.find_one({"chat_id": message.chat.id})
        if not is_aagha:
-           await bot.send_chat_action(message.chat.id, "typing")
+           await bot.send_chat_action(message.chat.id, ChatAction.TYPING) # ✅ This works fine
            K = []  
            is_chat = chatai.find({"word": message.text})  
            k = chatai.find_one({"word": message.text})      
@@ -173,7 +174,7 @@ async def aaghaai(client: Client, message: Message):
        bot_id = getme.id                             
        if message.reply_to_message.from_user.id == bot_id: 
            if not is_aagha:                   
-               await bot.send_chat_action(message.chat.id, "typing")
+               await bot.send_chat_action(message.chat.id, ChatAction.TYPING) # ✅ This works fine
                K = []  
                is_chat = chatai.find({"word": message.text})
                k = chatai.find_one({"word": message.text})      
@@ -216,7 +217,7 @@ async def aaghastickerai(client: Client, message: Message):
        aagha = Fazaldb["FazalDB"]["Groups"] 
        is_aagha = aagha.find_one({"chat_id": message.chat.id})
        if not is_aagha:
-           await bot.send_chat_action(message.chat.id, "typing")
+           await bot.send_chat_action(message.chat.id, ChatAction.TYPING) # ✅ This works fine
            K = []  
            is_chat = chatai.find({"word": message.sticker.file_unique_id})      
            k = chatai.find_one({"word": message.text})      
@@ -239,7 +240,7 @@ async def aaghastickerai(client: Client, message: Message):
        bot_id = getme.id
        if message.reply_to_message.from_user.id == bot_id: 
            if not is_aagha:                    
-               await bot.send_chat_action(message.chat.id, "typing")
+               await bot.send_chat_action(message.chat.id, ChatAction.TYPING) # ✅ This works fine
                K = []  
                is_chat = chatai.find({"word": message.text})
                k = chatai.find_one({"word": message.text})      
@@ -277,7 +278,7 @@ async def aaghaprivate(client: Client, message: Message):
    chatdb = MongoClient(MONGO_URL)
    chatai = chatdb["Word"]["WordDb"]
    if not message.reply_to_message: 
-       await bot.send_chat_action(message.chat.id, "typing")
+       await bot.send_chat_action(message.chat.id, ChatAction.TYPING) # ✅ This works fine
        K = []  
        is_chat = chatai.find({"word": message.text})                 
        for x in is_chat:
@@ -293,7 +294,7 @@ async def aaghaprivate(client: Client, message: Message):
        getme = await bot.get_me()
        bot_id = getme.id       
        if message.reply_to_message.from_user.id == bot_id:                    
-           await bot.send_chat_action(message.chat.id, "typing")
+           await bot.send_chat_action(message.chat.id, ChatAction.TYPING) # ✅ This works fine
            K = []  
            is_chat = chatai.find({"word": message.text})                 
            for x in is_chat:
@@ -320,7 +321,7 @@ async def aaghaprivatesticker(client: Client, message: Message):
    chatdb = MongoClient(MONGO_URL)
    chatai = chatdb["Word"]["WordDb"] 
    if not message.reply_to_message:
-       await bot.send_chat_action(message.chat.id, "typing")
+       await bot.send_chat_action(message.chat.id, ChatAction.TYPING) # ✅ This works fine
        K = []  
        is_chat = chatai.find({"word": message.sticker.file_unique_id})                 
        for x in is_chat:
@@ -336,7 +337,7 @@ async def aaghaprivatesticker(client: Client, message: Message):
        getme = await bot.get_me()
        bot_id = getme.id       
        if message.reply_to_message.from_user.id == bot_id:                    
-           await bot.send_chat_action(message.chat.id, "typing")
+           await bot.send_chat_action(message.chat.id, ChatAction.TYPING) # ✅ This works fine
            K = []  
            is_chat = chatai.find({"word": message.sticker.file_unique_id})                 
            for x in is_chat:
